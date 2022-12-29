@@ -17,87 +17,487 @@
 
 / {
     combos {
-            compatible = "zmk,combos";
-            combo_esc {
-                timeout-ms = <50>;
-                key-positions = <0 1>;
-                bindings = <&kp ESC>;
-            };
+        compatible = "zmk,combos";
+
+        prtsc_combo {
+            bindings = <&kp PRINTSCREEN>;
+            key-positions = <5 4>;
+        };
+
+        close {
+            bindings = <&close>;
+            key-positions = <0 1 2 3>;
+        };
+
+        lg {
+            bindings = <&kp LGUI>;
+            key-positions = <20 21>;
+        };
+
+        rg {
+            bindings = <&kp RGUI>;
+            key-positions = <28 29>;
+        };
+
+        caps {
+            bindings = <&caps_word>;
+            key-positions = <21 22 23>;
+        };
+
+        config {
+            bindings = <&mo 3>;
+            key-positions = <30 31>;
+        };
+
+        game {
+            bindings = <&tog 6>;
+            key-positions = <12 13 31>;
+        };
+
+        esc {
+            bindings = <&kp ESC>;
+            key-positions = <11 12 13>;
+        };
+
+        spc {
+            bindings = <&kp BSPC>;
+            key-positions = <8 7>;
+        };
+
+        del {
+            bindings = <&kp DEL>;
+            key-positions = <8 9>;
+        };
+
+        minus {
+            bindings = <&kp MINUS>;
+            key-positions = <27 26>;
+        };
+
+        rest {
+            bindings = <&reset>;
+            key-positions = <0 10 20>;
+        };
+
+        arte {
+            bindings = <&tog 8>;
+            key-positions = <16 17 33>;
+        };
     };
 
     macros {
-        gif: gif {
-            label = "giphy";
+        copy: copy {
             compatible = "zmk,behavior-macro";
+            label = "copy_macro";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp N2>
-                , <&macro_release &kp LSHFT>
-                , <&macro_tap &kp G &kp I &kp F>
-                ;
+            bindings =
+                <&macro_press>,
+                <&kp RCTRL>,
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_release>,
+                <&kp RCTRL>;
+        };
+        paste: paste {
+            compatible = "zmk,behavior-macro";
+            label = "paste_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RCTRL>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp RCTRL>;
+        };
+        cut: cut {
+            compatible = "zmk,behavior-macro";
+            label = "cut_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RCTRL>,
+                <&macro_tap>,
+                <&kp X>,
+                <&macro_release>,
+                <&kp RCTRL>;
+        };
+        undo: undo {
+            compatible = "zmk,behavior-macro";
+            label = "undo_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RCTRL>,
+                <&macro_tap>,
+                <&kp Z>,
+                <&macro_release>,
+                <&kp RCTRL>;
+        };
+        tab: tab {
+            compatible = "zmk,behavior-macro";
+            label = "tab_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RIGHT_ALT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_release>,
+                <&kp RIGHT_ALT>;
+        };
+        ced: ced {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RALT>,
+                <&macro_tap>,
+                <&kp COMMA>,
+                <&macro_release>,
+                <&kp RALT>;
+        };
+        eagd: eagd {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RALT>,
+                <&macro_tap>,
+                <&kp E>,
+                <&macro_release>,
+                <&kp RALT>;
+        };
+        agd: agd {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RALT>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp RALT>;
+        };
+        oagd: oagd {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RALT>,
+                <&macro_tap>,
+                <&kp O>,
+                <&macro_press>,
+                <&kp RALT>;
+        };
+        uagd: uagd {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RALT>,
+                <&macro_tap>,
+                <&kp U>,
+                <&macro_release>,
+                <&kp RALT>;
+        };
+        iagd: iagd {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RALT>,
+                <&macro_tap>,
+                <&kp I>,
+                <&macro_release>,
+                <&kp RALT>;
+        };
+        atil: atil {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp TILDE>,
+                <&macro_tap>,
+                <&kp A>;
+        };
+        otil: otil {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp TILDE>,
+                <&macro_tap>,
+                <&kp O>;
+        };
+        ecirc: ecirc {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp CARET>,
+                <&macro_tap>,
+                <&kp E>;
+        };
+        ocirc: ocirc {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp CARET>,
+                <&macro_tap>,
+                <&kp O>;
+        };
+        acirc: acirc {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp CARET>,
+                <&macro_tap>,
+                <&kp A>;
+        };
+        agrave: agrave {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp GRAVE>,
+                <&macro_tap>,
+                <&kp A>;
+        };
+        cao: cao {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&ced>,
+                <&macro_tap>,
+                <&atil>,
+                <&macro_tap>,
+                <&kp O>;
+        };
+        coe: coe {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&ced>,
+                <&macro_tap>,
+                <&otil>,
+                <&macro_tap>,
+                <&kp E>;
+        };
+        desktopn: desktopn {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_GUI>,
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp D>,
+                <&macro_release>,
+                <&kp LEFT_GUI &kp LCTRL>;
+        };
+        gleft: gleft {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LGUI>,
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp LEFT>,
+                <&macro_release>,
+                <&kp LGUI &kp LCTRL>;
+        };
+        grigt: grigt {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LGUI>,
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp RIGHT>,
+                <&macro_release>,
+                <&kp LGUI &kp LCTRL>;
+        };
+        close: close {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp F4>,
+                <&macro_release>,
+                <&kp LALT>;
+        };
+        ao: ao {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&atil>,
+                <&macro_tap>,
+                <&kp O>;
+        };
+        saveai: saveai {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT &kp LCTRL &kp LALT>,
+                <&macro_tap>,
+                <&kp S>,
+                <&macro_release>,
+                <&kp LSHFT &kp LCTRL &kp LEFT_ALT>;
+        };
+        selaai: selaai {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL &kp LSHFT>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp LCTRL &kp LSHFT>;
+        };
+        delete: delete {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp E>,
+                <&macro_release>,
+                <&kp LSHFT>;
+        };
+        caneta: caneta {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp TILDE>,
+                <&macro_release>,
+                <&kp LSHFT>;
         };
     };
 
-        keymap {
-                compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-
-                base_layer {
-
-label= "BASE" ;
-
-
-                &kp Q       &kp W       &kp F       &kp P       &kp G           &kp J       &kp L       &kp U       &kp Y       &kp SEMI
-                &mt LGUI A  &mt LALT R  &mt LCTRL S &mt LSHFT T &kp D           &kp H       &mt RSHFT N &mt RCTRL E &mt RALT I  &mt RGUI O
-                &kp Z       &kp X       &kp C       &kp V       &kp B           &kp K       &kp M       &kp COMMA   &kp DOT     &kp FSLH                   
-                                                    &lt NAV TAB   &kp SPACE       &kp RET   &lt SYM ESC                
-                        >;
-                };
-
-
-
-
-                nav_layer {
-
-label= "NAVI"                              ;
- bindings = <
-
-                &kp ESC     &bt BT_CLR  &kp UP      &kp EQUAL   &kp LBRC        &kp RBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_PLUS
-                &kp LSHFT   &kp LEFT    &kp DOWN    &kp RIGHT   &kp LBKT        &kp RBKT    &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_MINUS
-                &kp DEL     &kp PG_UP   &kp CAPS    &kp PG_DN   &kp LPAR        &kp RPAR    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_MULTIPLY                 
-                                                    &trans      &trans          &mo ADJ     &kp KP_N0                 
-                        >;
-                };
-
-
-
-                sim_layer {
-
-label= "SYM"  ;
-
-
- bindings = <
-
-                &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp CARET   &kp AMPS    &kp RA(U)   &kp SQT     &kp DQT       
-                &kp RA(A)   &trans      &kp RA(S)   &trans      &trans          &kp C_MUTE  &kp LS(RA(N4)) &kp RA(N5) &kp RA(N4)   &kp RA(O) 
-                &kp RA(F18) &kp RA(F19) &trans      &trans      &trans          &kp C_VOL_DN &kp C_VOL_UP &kp C_PREV &kp C_NEXT  &kp BSLH      
-                                                    &gif        &mo ADJ         &trans      &kp C_PP         
-                        >;
-                };
-
-
-                adjust_layer {
-
-label= "ADJ"  ;
-
- bindings = <
-
-                &reset      &bt BT_CLR &out OUT_TOG &trans      &trans          &trans      &kp F7      &kp F8      &kp F9      &kp F12
-                &bootloader &bt BT_NXT  &trans      &trans      &trans          &trans      &kp F4      &kp F5      &kp F6      &kp F11  
-                &trans      &bt BT_PRV  &trans      &trans      &trans          &trans      &kp F1      &kp F2      &kp F3      &kp F10              
-                                                    &trans      &trans          &trans      &trans            
-                        >;
-                };
+        default_layer {
+            bindings = <
+  &kp Q           &kp W             &kp E               &kp R        &kp T                &kp Y                &kp U        &kp I            &kp O      &kp P
+  &kp A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LEFT_CONTROL F        &kp G                &kp H  &mt RIGHT_CONTROL N  &mt LSHFT K  &mt RIGHT_ALT L   &kp SEMI
+  &kp Z           &kp X             &kp C               &kp V        &kp B                &kp N                &kp M    &kp COMMA          &kp DOT  &kp SLASH
+                                                    &lt 5 TAB  &lt 2 SPACE          &lt 1 ENTER      &lt 4 BACKSPACE
+            >;
         };
+
+        Layer__1 {
+            bindings = <
+ &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES  &kp CARET  &kp QUESTION    &kp GRAVE             &kp LT  &kp LBKT       &kp MINUS      &kp RIGHT_BRACKET         &kp GT
+         &kp EXCL             &kp AT   &kp HASH    &kp DOLLAR  &kp PERCENT           &kp LBRC  &kp LPAR       &kp COLON  &kp RIGHT_PARENTHESIS       &kp RBRC
+    &kp BACKSLASH          &kp TILDE   &kp PIPE      &kp SEMI     &kp AMPS          &kp SLASH  &kp HASH  &kp UNDERSCORE               &kp PLUS  &kp BACKSPACE
+                                                       &trans       &trans             &trans    &trans
+            >;
+        };
+
+        Layer__2 {
+            bindings = <
+    &kp PRCNT  &kp LEFT_PARENTHESIS  &kp COLON  &kp RIGHT_PARENTHESIS   &kp PIPE          &kp MINUS  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp ASTRK
+ &sk LEFT_GUI          &sk LEFT_ALT  &sk LSHFT              &sk LCTRL  &kp EQUAL          &kp EQUAL  &mt RCTRL N4   &mt RALT N5  &kp NUMBER_6   &kp PLUS
+        &undo                  &cut      &copy                 &paste     &trans          &kp SLASH  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ENTER
+                                                               &trans     &trans          &kp SPACE  &kp NUMBER_0
+            >;
+        };
+
+        Layer__3 {
+            bindings = <
+ &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans               &trans  &trans  &trans  &trans  &trans
+       &trans        &trans    &bt BT_PRV    &bt BT_NXT  &trans               &trans  &trans  &trans  &trans  &trans
+   &bt BT_CLR        &trans    &bt BT_CLR        &trans  &trans               &trans  &trans  &trans  &trans  &trans
+                                                 &trans  &trans          &bootloader  &reset
+            >;
+        };
+
+        Layer__4 {
+            bindings = <
+         &kp ESC          &tab     &gleft  &desktopn    &grigt            &kp C_VOLUME_UP  &kp K_SCROLL_UP     &kp UP  &kp K_SCROLL_DOWN  &kp CAPS
+    &sk LEFT_GUI  &sk LEFT_ALT  &sk LSHFT  &sk LCTRL  &sk RALT          &kp C_VOLUME_DOWN         &kp LEFT   &kp DOWN          &kp RIGHT   &kp DEL
+ &kp PRINTSCREEN        &paste       &cut      &copy     &undo                 &kp K_MUTE        &kp PG_UP  &kp PG_DN            &kp END  &kp HOME
+                                              &trans    &trans                     &trans           &trans
+            >;
+        };
+
+        Layer__5 {
+            bindings = <
+  &kp F1   &kp F2      &kp F3  &kp F4   &kp F5            &agd   &oagd    &eagd   &iagd    &cao
+  &kp F6   &kp F7      &kp F8  &kp F9  &kp F10           &atil   &otil  &agrave   &uagd    &coe
+ &kp F11  &kp F12  &bt BT_CLR  &trans   &trans          &acirc  &ocirc   &ecirc    &ced     &ao
+                               &trans   &trans           &mo 3  &trans
+            >;
+        };
+
+        Layer__6 {
+            bindings = <
+   &kp TAB   &kp Q   &kp W      &kp E      &kp R          &kp C_VOL_UP   &kp Y   &kp N   &kp V    &tog 6
+ &kp LSHFT   &kp A   &kp S      &kp D      &kp F          &kp C_VOL_DN   &kp T   &kp M   &kp I    &trans
+ &kp LCTRL   &kp Z   &kp X      &kp C      &kp B                &trans  &trans  &trans  &trans  &kp LGUI
+                            &lt 7 ESC  &kp SPACE                &trans  &trans
+            >;
+        };
+
+        Layer__7 {
+            bindings = <
+ &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5          &trans  &trans  &trans  &trans  &trans
+       &kp F6         &kp B         &kp M         &kp T         &kp G          &trans  &trans  &trans  &trans  &trans
+       &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &trans  &trans  &trans  &trans  &trans
+                                                 &trans        &trans          &trans  &trans
+            >;
+        };
+
+        Layer__8 {
+            bindings = <
+   &kp ESC  &selaai   &kp W    &kp E     &kp T          &saveai  &trans  &trans  &trans  &tog 8
+ &kp LSHFT    &kp A   &kp S    &kp V   &delete           &trans  &trans  &trans  &trans  &trans
+ &kp LCTRL    &kp Z   &kp N    &kp B     &kp P           &trans  &trans  &trans  &trans  &trans
+                             &kp ESC  &kp LALT           &trans  &trans
+            >;
+        };
+    };
 };
