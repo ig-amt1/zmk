@@ -1,0 +1,11 @@
+file_format: "1"
+id: pulso
+name: PULSO
+type: shield
+url: https://github.com/ig-amt1/pulso-keyboard
+requires: [seeeduino_xiao_ble]
+features:
+  - keys
+siblings:
+  - pulso_left
+  - pulso_right
